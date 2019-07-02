@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC  "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Simply Tabs</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("div.selectTabs_first, div.selectTabs_second").each(function () {
+		var tmp = $(this);
+		console.log($(tmp).find(" .lineTabs li"));
+		$(tmp).find(".lineTabs li").each(function (i) {
+			$(tmp).find(".lineTabs li:eq("+i+") a").click(function(){
+				var tab_id=i+1;
+				$(tmp).find(".lineTabs li").removeClass("active");
+				$(this).parent().addClass("active");
+				$(tmp).find(".content div").stop(false,false).hide();
+				$(tmp).find(".tab"+tab_id).stop(false,false).show();
+				return false;
+			});
+		});
+	});
+});
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<h3>Блок з вкладками- варіант 1</h3>
+		<div class="selectTabs_first">
+			<div class="content">
+				<div class="tab1">
+					<img alt="joomla" src="images/img_5.jpg" />
+				</div>
+				<div class="tab2">
+					<img alt="joomla" src="images/img_6.jpg" />
+				</div>
+				<div class="tab3">
+					<img alt="joomla" src="images/img_7.jpg" />
+				</div>
+			</div>			
+			<ul class="lineTabs">
+				<li class="active"><a href="#">HTML и CSS</a></li>
+				<li><a href="#">jQuery</a></li>
+				<li><a href="#">CMS Joomla</a></li>
+			</ul>
+		</div>	
+		
+	</div>
+</body>
+</html>
